@@ -11,9 +11,10 @@ import scala.collection.JavaConverters._
 
 class CrawlerActor(writingActor: ActorRef) extends Actor with StrictLogging {
 
-  override def preStart(): Unit =
+  override def preStart(): Unit = {
     logger.info(s"${self.path.name} starts working")
     context.parent ! AwaitingCompleted
+  }
 
   override def postStop(): Unit = logger.info(s"Actor - ${self.path.name} stopped analyzing")
 
